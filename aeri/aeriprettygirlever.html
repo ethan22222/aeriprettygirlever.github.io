@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: linear-gradient(to right, #ff85a2, #ffb6c1);
+            color: white;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            padding: 50px;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 2.8em; /* 调大字体 */
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 2.0em; /* 调大字体 */
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #confirm-button {
+            background-color: #ff85a2;
+            color: white;
+        }
+
+        #date-selector {
+            display: none;
+        }
+
+        #result-page,
+        #love-page,
+        .image-container {
+            display: none;
+        }
+
+        .image-container {
+            margin-top: 20px;
+        }
+
+        .love-image {
+            width: 434px;
+            height: 301px;
+        }
+    </style>
+    <title>This website is for aeri🐇</title>
+</head>
+
+<body>
+    <h1>This website is for aeri🐇</h1>
+    <button id="continue-button" class="button" onclick="showInvitation()">Continue</button>
+
+    <div id="invitation-page" class="image-container">
+        <img class="love-image" src="https://img0.baidu.com/it/u=559717648,3616590665&fm=253&fmt=auto&app=138&f=GIF?w=434&h=301" alt="Love gif" />
+        <h1>You've been invited to the aquarium ♡</h1>
+        <button class="button" onclick="showDecision()">Really?</button>
+    </div>
+
+    <div id="decision-page" class="image-container">
+        <img class="love-image" src="https://img0.baidu.com/it/u=559717648,3616590665&fm=253&fmt=auto&app=138&f=GIF?w=434&h=301" alt="Love gif" />
+        <h1>Will you come with me?</h1>
+        <button class="button" onclick="showDateSelector()">Yes</button>
+        <button class="button" onclick="showNoChoice()">No</button>
+    </div>
+
+    <div id="date-selector" class="image-container">
+        <img class="love-image" src="https://img0.baidu.com/it/u=559717648,3616590665&fm=253&fmt=auto&app=138&f=GIF?w=434&h=301" alt="Love gif" />
+        <h1>Please select a date</h1>
+        <input type="date" id="datepicker" min="2023-12-07" max="2023-12-31" />
+        <button class="button" onclick="showConfirmation()">Confirm</button>
+    </div>
+
+    <div id="result-page" class="image-container">
+        <img class="love-image" src="https://img0.baidu.com/it/u=559717648,3616590665&fm=253&fmt=auto&app=138&f=GIF?w=434&h=301" alt="Love gif" />
+        <h1 id="result-text"></h1>
+        <button class="button" id="confirm-button" onclick="showLovePage()">Confirm</button>
+    </div>
+
+    <div id="love-page" class="image-container">
+        <img class="love-image" src="https://img0.baidu.com/it/u=559717648,3616590665&fm=253&fmt=auto&app=138&f=GIF?w=434&h=301" alt="Love gif" />
+        <h1>I UV U SOOO MUCH</h1>
+    </div>
+
+    <script>
+        function showInvitation() {
+            document.getElementById('invitation-page').style.display = 'block';
+            document.getElementById('continue-button').style.display = 'none';
+        }
+
+        function showDecision() {
+            document.getElementById('decision-page').style.display = 'block';
+            document.getElementById('invitation-page').style.display = 'none';
+        }
+
+        function showNoChoice() {
+            alert('You have no choice');
+            showDecision();
+        }
+
+        function showDateSelector() {
+            document.getElementById('date-selector').style.display = 'block';
+            document.getElementById('decision-page').style.display = 'none';
+        }
+
+        function showConfirmation() {
+            var selectedDate = document.getElementById('datepicker').value;
+            if (selectedDate) {
+                document.getElementById('result-page').style.display = 'block';
+                document.getElementById('date-selector').style.display = 'none';
+                document.getElementById('result-text').innerText = 'Yey we\'re going to the aquarium on ' + selectedDate;
+            } else {
+                alert('Please select a date');
+            }
+        }
+
+        function showLovePage() {
+            document.getElementById('love-page').style.display = 'block';
+            document.getElementById('result-page').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
